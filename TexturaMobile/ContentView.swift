@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
     var body: some View {
@@ -12,11 +13,12 @@ private struct HomeView: View {
     var body: some View {
         NavigationStack {
             SearchableHomeContent()
-            .navigationTitle("")
-            .toolbar {
-                DefaultToolbarItem(kind: .search, placement: .bottomBar)
-            }
-            .searchable(text: $query, prompt: "Search Textura")
+                .navigationTitle("")
+                .toolbar {
+                    DefaultToolbarItem(kind: .search, placement: .bottomBar)
+                }
+                .searchable(text: $query, prompt: "Search Textura")
+                .tint(TexturaColor.accent)
         }
     }
 }
@@ -67,10 +69,36 @@ private struct SearchView: View {
 }
 
 private enum TexturaColor {
-    static let background = Color(red: 252 / 255, green: 249 / 255, blue: 246 / 255)
-    static let foreground = Color(red: 33 / 255, green: 32 / 255, blue: 28 / 255)
+    static let background = Color(
+        light: UIColor(red: 252 / 255, green: 249 / 255, blue: 246 / 255, alpha: 1),
+        dark: UIColor(red: 34 / 255, green: 34 / 255, blue: 34 / 255, alpha: 1)
+    )
+
+    static let foreground = Color(
+        light: UIColor(red: 33 / 255, green: 32 / 255, blue: 28 / 255, alpha: 1),
+        dark: UIColor(red: 238 / 255, green: 238 / 255, blue: 238 / 255, alpha: 1)
+    )
+
+    static let accent = Color(
+        light: UIColor(red: 173 / 255, green: 127 / 255, blue: 88 / 255, alpha: 1),
+        dark: UIColor(red: 173 / 255, green: 127 / 255, blue: 88 / 255, alpha: 1)
+    )
 }
 
-#Preview {
+private extension Color {
+    init(light: UIColor, dark: UIColor) {
+        self.init(uiColor: UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark ? dark : light
+        })
+    }
+}
+
+#Preview("Light") {
     ContentView()
+        .preferredColorScheme(.light)
+}
+
+#Preview("Dark") {
+    ContentView()
+        .preferredColorScheme(.dark)
 }
