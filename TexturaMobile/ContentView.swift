@@ -5,7 +5,8 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            Color.clear
+            Color("Background")
+                .ignoresSafeArea()
         }
         .searchable(text: $query, prompt: "Search Textura")
     }
