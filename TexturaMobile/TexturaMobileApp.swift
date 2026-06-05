@@ -9,6 +9,10 @@ import SwiftUI
 
 @main
 struct TexturaMobileApp: App {
+    init() {
+        FontRegistrar.registerBundledFonts()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
