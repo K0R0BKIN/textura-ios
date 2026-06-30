@@ -3,61 +3,50 @@
   "fill-specializations" : [
     {
       "value" : {
-        "solid" : "display-p3:0.98619,0.97711,0.96625,1.00000"
+        "solid" : "display-p3:0.98431,0.97647,0.97255,1.00000"
       }
     },
     {
       "appearance" : "dark",
-      "value" : "automatic"
+      "value" : "system-dark"
     }
   ],
   "groups" : [
     {
+      "blur-material-specializations" : [
+        {
+          "value" : null
+        },
+        {
+          "appearance" : "tinted",
+          "value" : null
+        }
+      ],
+      "hidden" : false,
       "layers" : [
         {
-          "blend-mode-specializations" : [
-            {
-              "value" : "normal"
-            },
-            {
-              "appearance" : "dark",
-              "value" : "normal"
-            },
-            {
-              "appearance" : "tinted",
-              "value" : "normal"
-            }
-          ],
           "fill-specializations" : [
             {
-              "value" : "none"
+              "value" : {
+                "solid" : "display-p3:0.12941,0.12549,0.10980,1.00000"
+              }
             },
             {
               "appearance" : "dark",
               "value" : {
-                "solid" : "extended-gray:1.00000,1.00000"
+                "solid" : "display-p3:0.93333,0.93333,0.93333,1.00000"
               }
             },
             {
               "appearance" : "tinted",
               "value" : {
-                "automatic-gradient" : "srgb:1.00000,1.00000,1.00000,1.00000",
-                "orientation" : {
-                  "start" : {
-                    "x" : 0.5,
-                    "y" : 1
-                  },
-                  "stop" : {
-                    "x" : 0.5,
-                    "y" : 0.3
-                  }
-                }
+                "solid" : "extended-gray:1.00000,1.00000"
               }
             }
           ],
           "glass-specializations" : [
             {
-              "value" : false
+              "value" : true
             },
             {
               "appearance" : "dark",
@@ -69,38 +58,75 @@
             }
           ],
           "hidden" : false,
-          "image-name" : "textura-icon-foreground 2.png",
+          "image-name" : "T.svg",
           "name" : "T",
-          "opacity-specializations" : [
-            {
-              "value" : 1
-            },
-            {
-              "appearance" : "dark",
-              "value" : 1
-            },
-            {
-              "appearance" : "tinted",
-              "value" : 1
-            }
-          ],
           "position" : {
-            "scale" : 1.27,
+            "scale" : 1,
             "translation-in-points" : [
-              0.6349999999999909,
-              -1.5087649102207479
+              5.684341886080802e-14,
+              12
             ]
           }
         }
       ],
-      "shadow" : {
-        "kind" : "neutral",
-        "opacity" : 0.5
-      },
-      "translucency" : {
-        "enabled" : true,
-        "value" : 0.5
-      }
+      "lighting" : "individual",
+      "shadow-specializations" : [
+        {
+          "value" : {
+            "kind" : "none",
+            "opacity" : 0.5
+          }
+        },
+        {
+          "appearance" : "dark",
+          "value" : {
+            "kind" : "neutral",
+            "opacity" : 0.5
+          }
+        },
+        {
+          "appearance" : "tinted",
+          "value" : {
+            "kind" : "neutral",
+            "opacity" : 1
+          }
+        }
+      ],
+      "specular-specializations" : [
+        {
+          "value" : false
+        },
+        {
+          "appearance" : "dark",
+          "value" : true
+        },
+        {
+          "appearance" : "tinted",
+          "value" : true
+        }
+      ],
+      "translucency-specializations" : [
+        {
+          "value" : {
+            "enabled" : false,
+            "value" : 0.5
+          }
+        },
+        {
+          "appearance" : "dark",
+          "value" : {
+            "enabled" : false,
+            "value" : 0.5
+          }
+        },
+        {
+          "appearance" : "tinted",
+          "value" : {
+            "enabled" : true,
+            "value" : 0.5
+          }
+        }
+      ]
     }
   ],
   "supported-platforms" : {
