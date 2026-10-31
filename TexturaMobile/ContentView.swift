@@ -6,21 +6,35 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color("Background")
-                    .ignoresSafeArea()
-                
-                VStack {
-                    Spacer()
-                    
-                    LogoView()
-                    
-                    Spacer()
-                    Spacer()
-                }
-            }
+            HomeView()
         }
         .searchable(text: $query)
+    }
+}
+
+private struct HomeView: View {
+    @Environment(\.isSearching) private var isSearching
+
+    var body: some View {
+        ZStack {
+            Color("Background")
+                .ignoresSafeArea()
+
+            VStack {
+                Spacer()
+
+                LogoView()
+
+                Spacer()
+                Spacer()
+            }
+        }
+        .overlay {
+            if isSearching {
+                Color("Background")
+                    .ignoresSafeArea()
+            }
+        }
     }
 }
 
