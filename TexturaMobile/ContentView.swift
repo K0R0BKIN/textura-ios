@@ -20,7 +20,7 @@ struct ContentView: View {
                 }
             }
         }
-        .searchable(text: $query, prompt: "Search Textura")
+        .searchable(text: $query)
     }
 }
 
