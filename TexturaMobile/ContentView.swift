@@ -3,36 +3,35 @@ import CoreText
 
 struct ContentView: View {
     @State private var query = ""
-    
+
+    private var results: [Headword] {
+        HeadwordSearch.suggestions(for: query)
+    }
+
     var body: some View {
         NavigationStack {
-            HomeView()
-        }
-        .searchable(text: $query)
-    }
-}
-
-private struct HomeView: View {
-    @Environment(\.isSearching) private var isSearching
-
-    var body: some View {
-        ZStack {
-            Color("Background")
-                .ignoresSafeArea()
-
-            VStack {
-                Spacer()
-
-                LogoView()
-
-                Spacer()
-                Spacer()
+            List(results, id: \.self) { headword in
+                NavigationLink(headword.form, value: headword)
             }
-        }
-        .overlay {
-            if isSearching {
-                Color("Background")
-                    .ignoresSafeArea()
+            .scrollContentBackground(.hidden)
+            .background(Color("Background"))
+            .navigationDestination(for: Headword.self) { headword in
+                ArticleView(headword: headword)
+            }
+            .searchable(text: $query)
+            .overlay {
+                if query.isEmpty {
+                    VStack {
+                        Spacer()
+
+                        LogoView()
+
+                        Spacer()
+                        Spacer()
+                    }
+                } else if results.isEmpty {
+                    ContentUnavailableView.search
+                }
             }
         }
     }
