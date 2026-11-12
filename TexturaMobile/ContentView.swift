@@ -1,4 +1,3 @@
-import CoreText
 import SwiftUI
 
 struct ContentView: View {
@@ -51,16 +50,6 @@ private struct HomeView: View {
     }
 }
 
-private struct ArticleView: View {
-    let headword: Headword
-
-    var body: some View {
-        Color("Background")
-            .ignoresSafeArea()
-            .navigationTitle(headword.form)
-    }
-}
-
 private struct LogoView: View {
     var body: some View {
         Text("Textura")
@@ -68,28 +57,6 @@ private struct LogoView: View {
             .tracking(-1.8)
             .foregroundStyle(Color("LogoForeground"))
             .lineLimit(1)
-    }
-}
-
-extension Font {
-    fileprivate static func wordmark(size: CGFloat) -> Font {
-        let base = CTFontDescriptorCreateWithNameAndSize(
-            "SourceSerif4Variable-Roman" as CFString,
-            size
-        )
-        let weighted = CTFontDescriptorCreateCopyWithVariation(
-            base,
-            NSNumber(value: 0x7767_6874 as UInt32),  // "wght"
-            900
-        )
-        let optical = CTFontDescriptorCreateCopyWithVariation(
-            weighted,
-            NSNumber(value: 0x6F70_737A as UInt32),  // "opsz"
-            16
-        )
-        let font = CTFontCreateWithFontDescriptor(optical, size, nil)
-
-        return Font(font)
     }
 }
 
