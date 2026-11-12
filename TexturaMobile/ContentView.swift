@@ -3,22 +3,22 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var query = ""
-    @State private var path: [String] = []
+    @State private var path: [Headword] = []
 
     var body: some View {
         NavigationStack(path: $path) {
             HomeView()
                 .searchable(text: $query)
                 .onSubmit(of: .search) {
-                    let headword = query.trimmingCharacters(
+                    let form = query.trimmingCharacters(
                         in: .whitespacesAndNewlines
                     )
 
-                    guard !headword.isEmpty else { return }
+                    guard !form.isEmpty else { return }
 
-                    path.append(headword)
+                    path.append(Headword(form: form, variety: .enUS))
                 }
-                .navigationDestination(for: String.self) { headword in
+                .navigationDestination(for: Headword.self) { headword in
                     ArticleView(headword: headword)
                 }
         }
@@ -52,12 +52,12 @@ private struct HomeView: View {
 }
 
 private struct ArticleView: View {
-    let headword: String
+    let headword: Headword
 
     var body: some View {
         Color("Background")
             .ignoresSafeArea()
-            .navigationTitle(headword)
+            .navigationTitle(headword.form)
     }
 }
 
