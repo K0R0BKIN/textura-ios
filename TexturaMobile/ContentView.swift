@@ -3,12 +3,25 @@ import CoreText
 
 struct ContentView: View {
     @State private var query = ""
-    
+    @State private var path: [String] = []
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             HomeView()
+                .searchable(text: $query)
+                .onSubmit(of: .search) {
+                    let headword = query.trimmingCharacters(
+                        in: .whitespacesAndNewlines
+                    )
+
+                    guard !headword.isEmpty else { return }
+
+                    path.append(headword)
+                }
+                .navigationDestination(for: String.self) { headword in
+                    ArticleView(headword: headword)
+                }
         }
-        .searchable(text: $query)
     }
 }
 
@@ -35,6 +48,16 @@ private struct HomeView: View {
                     .ignoresSafeArea()
             }
         }
+    }
+}
+
+private struct ArticleView: View {
+    let headword: String
+
+    var body: some View {
+        Color("Background")
+            .ignoresSafeArea()
+            .navigationTitle(headword)
     }
 }
 
