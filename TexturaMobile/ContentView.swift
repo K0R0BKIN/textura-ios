@@ -1,5 +1,5 @@
-import SwiftUI
 import CoreText
+import SwiftUI
 
 struct ContentView: View {
     @State private var query = ""
@@ -71,20 +71,20 @@ private struct LogoView: View {
     }
 }
 
-private extension Font {
-    static func wordmark(size: CGFloat) -> Font {
+extension Font {
+    fileprivate static func wordmark(size: CGFloat) -> Font {
         let base = CTFontDescriptorCreateWithNameAndSize(
             "SourceSerif4Variable-Roman" as CFString,
             size
         )
         let weighted = CTFontDescriptorCreateCopyWithVariation(
             base,
-            NSNumber(value: 0x77676874 as UInt32), // "wght"
+            NSNumber(value: 0x7767_6874 as UInt32),  // "wght"
             900
         )
         let optical = CTFontDescriptorCreateCopyWithVariation(
             weighted,
-            NSNumber(value: 0x6F70737A as UInt32), // "opsz"
+            NSNumber(value: 0x6F70_737A as UInt32),  // "opsz"
             16
         )
         let font = CTFontCreateWithFontDescriptor(optical, size, nil)
