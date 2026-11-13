@@ -19,7 +19,6 @@ struct ArticleView: View {
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("Background"))
-            .navigationTitle(headword.form)
             .task(id: headword) {
                 state = .loading
 
