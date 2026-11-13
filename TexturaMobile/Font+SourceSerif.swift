@@ -8,7 +8,7 @@ extension Font {
         opticalSize: CGFloat
     ) -> Font {
         let base = CTFontDescriptorCreateWithNameAndSize(
-            "SourceSerif4Variable-Roman" as CFString,
+            "SourceSerif4Roman-Regular" as CFString,
             size
         )
         let weighted = CTFontDescriptorCreateCopyWithVariation(

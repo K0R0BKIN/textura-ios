@@ -4,7 +4,8 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SourceSerif4Variable-Roman.ttf</string>
+		<string>SourceSerif4.ttf</string>
+		<string>SourceSerif4-Italic.ttf</string>
 	</array>
 </dict>
 </plist>
