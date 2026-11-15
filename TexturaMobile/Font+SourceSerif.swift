@@ -28,4 +28,20 @@ extension Font {
     static func wordmark(size: CGFloat) -> Font {
         sourceSerif(size: size, weight: 900, opticalSize: 16)
     }
+
+    static func headword(size: CGFloat) -> Font {
+        sourceSerif(
+            size: size,
+            weight: 600,
+            opticalSize: 16
+        )
+    }
+
+    static var sourceSerifBody: Font {
+        .custom(
+            "SourceSerif4Roman-Regular",
+            size: 17,
+            relativeTo: .body
+        )
+    }
 }
