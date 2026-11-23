@@ -1,3 +1,3 @@
-enum Variety: String, Decodable {
+enum Variety: String, Codable {
     case enUS = "en-US"
 }

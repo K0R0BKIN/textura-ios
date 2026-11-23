@@ -7,5 +7,9 @@
 		<string>SourceSerif4.ttf</string>
 		<string>SourceSerif4-Italic.ttf</string>
 	</array>
+	<key>AlgoliaAppID</key>
+	<string>PRPCJBPIR5</string>
+	<key>AlgoliaSearchAPIKey</key>
+	<string>968298e6abd0c90892531b1e3a434728</string>
 </dict>
 </plist>
