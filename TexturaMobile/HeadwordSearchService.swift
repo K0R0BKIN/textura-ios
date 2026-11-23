@@ -14,7 +14,7 @@ struct HeadwordSearchService {
                 searchParams: .searchSearchParamsObject(
                     SearchSearchParamsObject(
                         query: query,
-                        hitsPerPage: 5
+                        hitsPerPage: 8
                     )
                 )
             )

@@ -8,7 +8,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            HomeView()
+            HomeView(query: query, searchService: searchService)
                 .searchable(text: $query)
                 .onSubmit(of: .search) {
                     let form = query.trimmingCharacters(
@@ -27,6 +27,9 @@ struct ContentView: View {
 }
 
 private struct HomeView: View {
+    let query: String
+    let searchService: HeadwordSearchService
+
     @Environment(\.isSearching) private var isSearching
 
     var body: some View {
@@ -45,8 +48,12 @@ private struct HomeView: View {
         }
         .overlay {
             if isSearching {
-                Color("Background")
-                    .ignoresSafeArea()
+                SearchResultsView(
+                    query: query,
+                    searchService: searchService
+                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color("Background"))
             }
         }
     }
