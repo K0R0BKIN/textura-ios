@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    let searchService: HeadwordSearchService
+
     @State private var query = ""
     @State private var path: [Headword] = []
 
@@ -61,5 +63,5 @@ private struct LogoView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(searchService: try! .live())
 }

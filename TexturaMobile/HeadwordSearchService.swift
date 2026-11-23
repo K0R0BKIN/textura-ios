@@ -22,3 +22,14 @@ struct HeadwordSearchService {
         return response.hits
     }
 }
+
+extension HeadwordSearchService {
+    static func live() throws -> Self {
+        let configuration = try AppConfiguration()
+
+        return try Self(
+            appID: configuration.algoliaAppID,
+            apiKey: configuration.algoliaSearchAPIKey
+        )
+    }
+}
