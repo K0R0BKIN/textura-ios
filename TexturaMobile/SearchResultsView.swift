@@ -54,6 +54,7 @@ struct SearchResultsView: View {
                 results = hits
             }
         }
+        .scrollDismissesKeyboard(.interactively)
         .safeAreaBar(edge: .top) {
             Text("Search")
                 .font(.title2.weight(.medium))
