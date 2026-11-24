@@ -56,15 +56,13 @@ struct SearchResultsView: View {
             }
         }
         .safeAreaBar(edge: .top) {
-            if !results.isEmpty {
-                Text("Suggestions")
-                    .font(.title2.weight(.medium))
-                    .foregroundStyle(Color("Foreground"))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal)
-                    .padding(.vertical, 12)
-                    .accessibilityAddTraits(.isHeader)
-            }
+            Text("Search")
+                .font(.title2.weight(.medium))
+                .foregroundStyle(Color("Foreground"))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .padding(.vertical, 12)
+                .accessibilityAddTraits(.isHeader)
         }
     }
 }
