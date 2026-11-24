@@ -11,13 +11,13 @@ struct ContentView: View {
             HomeView(query: query, searchService: searchService)
                 .searchable(text: $query)
                 .onSubmit(of: .search) {
-                    let form = query.trimmingCharacters(
+                    let trimmedQuery = query.trimmingCharacters(
                         in: .whitespacesAndNewlines
                     )
 
-                    guard !form.isEmpty else { return }
+                    guard !trimmedQuery.isEmpty else { return }
 
-                    path.append(Headword(form: form, variety: .enUS))
+                    path.append(Headword(form: trimmedQuery, variety: .enUS))
                 }
                 .navigationDestination(for: Headword.self) { headword in
                     ArticleView(headword: headword)
