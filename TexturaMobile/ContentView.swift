@@ -10,6 +10,7 @@ struct ContentView: View {
         NavigationStack(path: $path) {
             HomeView(query: query, searchService: searchService)
                 .searchable(text: $query)
+                .toolbarVisibility(.hidden, for: .navigationBar)
                 .onSubmit(of: .search) {
                     let trimmedQuery = query.trimmingCharacters(
                         in: .whitespacesAndNewlines
@@ -39,9 +40,11 @@ private struct HomeView: View {
 
             VStack {
                 Spacer()
+                Spacer()
 
                 LogoView()
 
+                Spacer()
                 Spacer()
                 Spacer()
             }
