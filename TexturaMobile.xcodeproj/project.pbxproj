@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		11C9F0AF30B43B9E00AC8CF1 /* AlgoliaSearch in Frameworks */ = {isa = PBXBuildFile; productRef = 11C9F0AE30B43B9E00AC8CF1 /* AlgoliaSearch */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		116027302FD2EA8600978B9D /* TexturaMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TexturaMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C9F0AF30B43B9E00AC8CF1 /* AlgoliaSearch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = TexturaMobile;
 			packageProductDependencies = (
+				11C9F0AE30B43B9E00AC8CF1 /* AlgoliaSearch */,
 			);
 			productName = TexturaMobile;
 			productReference = 116027302FD2EA8600978B9D /* TexturaMobile.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 116027272FD2EA8600978B9D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				11C9F0AD30B43B9E00AC8CF1 /* XCRemoteSwiftPackageReference "algoliasearch-client-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 116027312FD2EA8600978B9D /* Products */;
 			projectDirPath = "";
@@ -274,6 +283,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +318,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -347,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		11C9F0AD30B43B9E00AC8CF1 /* XCRemoteSwiftPackageReference "algoliasearch-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/algolia/algoliasearch-client-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.55.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		11C9F0AE30B43B9E00AC8CF1 /* AlgoliaSearch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11C9F0AD30B43B9E00AC8CF1 /* XCRemoteSwiftPackageReference "algoliasearch-client-swift" */;
+			productName = AlgoliaSearch;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 116027282FD2EA8600978B9D /* Project object */;
 }

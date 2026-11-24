@@ -1,18 +1,36 @@
 import SwiftUI
-import CoreText
 
 struct ContentView: View {
+    let searchService: HeadwordSearchService
+
     @State private var query = ""
-    
+    @State private var path: [Headword] = []
+
     var body: some View {
-        NavigationStack {
-            HomeView()
+        NavigationStack(path: $path) {
+            HomeView(query: query, searchService: searchService)
+                .searchable(text: $query)
+                .searchPresentationToolbarBehavior(.avoidHidingContent)
+                .onSubmit(of: .search) {
+                    let trimmedQuery = query.trimmingCharacters(
+                        in: .whitespacesAndNewlines
+                    )
+
+                    guard !trimmedQuery.isEmpty else { return }
+
+                    path.append(Headword(form: trimmedQuery, variety: .enUS))
+                }
+                .navigationDestination(for: Headword.self) { headword in
+                    ArticleView(headword: headword)
+                }
         }
-        .searchable(text: $query)
     }
 }
 
 private struct HomeView: View {
+    let query: String
+    let searchService: HeadwordSearchService
+
     @Environment(\.isSearching) private var isSearching
 
     var body: some View {
@@ -20,19 +38,31 @@ private struct HomeView: View {
             Color("Background")
                 .ignoresSafeArea()
 
-            VStack {
-                Spacer()
+            if isSearching {
+                SearchResultsView(
+                    query: query,
+                    searchService: searchService
+                )
+            } else {
+                VStack {
+                    Spacer()
 
-                LogoView()
+                    LogoView()
 
-                Spacer()
-                Spacer()
+                    Spacer()
+                    Spacer()
+                }
             }
         }
-        .overlay {
+        .navigationTitle(isSearching ? "Search" : "")
+        .toolbarTitleDisplayMode(.inline)
+        .toolbarTitleAlignment(.leading)
+        .toolbar {
             if isSearching {
-                Color("Background")
-                    .ignoresSafeArea()
+                ToolbarItem(placement: .title) {
+                    Text("Search")
+                        .font(.title)
+                }
             }
         }
     }
@@ -48,28 +78,6 @@ private struct LogoView: View {
     }
 }
 
-private extension Font {
-    static func wordmark(size: CGFloat) -> Font {
-        let base = CTFontDescriptorCreateWithNameAndSize(
-            "SourceSerif4Variable-Roman" as CFString,
-            size
-        )
-        let weighted = CTFontDescriptorCreateCopyWithVariation(
-            base,
-            NSNumber(value: 0x77676874 as UInt32), // "wght"
-            900
-        )
-        let optical = CTFontDescriptorCreateCopyWithVariation(
-            weighted,
-            NSNumber(value: 0x6F70737A as UInt32), // "opsz"
-            16
-        )
-        let font = CTFontCreateWithFontDescriptor(optical, size, nil)
-
-        return Font(font)
-    }
-}
-
 #Preview {
-    ContentView()
+    ContentView(searchService: try! .live())
 }
