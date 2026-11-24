@@ -39,10 +39,9 @@ struct SearchResultsView: View {
             }
             .padding(.horizontal)
             .task(id: query) {
-                results = []
-
                 guard query.contains(where: { $0.isLetter || $0.isNumber })
                 else {
+                    results = []
                     return
                 }
 
