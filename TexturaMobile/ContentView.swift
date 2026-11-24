@@ -10,7 +10,7 @@ struct ContentView: View {
         NavigationStack(path: $path) {
             HomeView(query: query, searchService: searchService)
                 .searchable(text: $query)
-                .toolbarVisibility(.hidden, for: .navigationBar)
+                .searchPresentationToolbarBehavior(.avoidHidingContent)
                 .onSubmit(of: .search) {
                     let trimmedQuery = query.trimmingCharacters(
                         in: .whitespacesAndNewlines
@@ -46,13 +46,22 @@ private struct HomeView: View {
             } else {
                 VStack {
                     Spacer()
-                    Spacer()
 
                     LogoView()
 
                     Spacer()
                     Spacer()
-                    Spacer()
+                }
+            }
+        }
+        .navigationTitle(isSearching ? "Search" : "")
+        .toolbarTitleDisplayMode(.inline)
+        .toolbarTitleAlignment(.leading)
+        .toolbar {
+            if isSearching {
+                ToolbarItem(placement: .title) {
+                    Text("Search")
+                        .font(.title)
                 }
             }
         }

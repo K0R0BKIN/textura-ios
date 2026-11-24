@@ -55,14 +55,6 @@ struct SearchResultsView: View {
             }
         }
         .scrollDismissesKeyboard(.interactively)
-        .safeAreaBar(edge: .top) {
-            Text("Search")
-                .font(.title2.weight(.medium))
-                .foregroundStyle(Color("Foreground"))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-                .padding(.vertical, 12)
-                .accessibilityAddTraits(.isHeader)
-        }
+        .scrollEdgeEffectStyle(.soft, for: .top)
     }
 }
