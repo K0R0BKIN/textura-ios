@@ -38,25 +38,22 @@ private struct HomeView: View {
             Color("Background")
                 .ignoresSafeArea()
 
-            VStack {
-                Spacer()
-                Spacer()
-
-                LogoView()
-
-                Spacer()
-                Spacer()
-                Spacer()
-            }
-        }
-        .overlay {
             if isSearching {
                 SearchResultsView(
                     query: query,
                     searchService: searchService
                 )
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color("Background"))
+            } else {
+                VStack {
+                    Spacer()
+                    Spacer()
+
+                    LogoView()
+
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                }
             }
         }
     }
